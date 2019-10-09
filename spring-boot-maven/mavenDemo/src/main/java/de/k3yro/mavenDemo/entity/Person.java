@@ -15,6 +15,7 @@ public class Person {
     private String vorname;
     private String nachname;
     private Date geburtsdatum;
+    private Boolean deleted;
 
     public Person() {
     }
@@ -23,6 +24,14 @@ public class Person {
         this.vorname = vorname;
         this.nachname = nachname;
         this.geburtsdatum = geburtsdatum;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 
     public Date getGeburtsdatum() {

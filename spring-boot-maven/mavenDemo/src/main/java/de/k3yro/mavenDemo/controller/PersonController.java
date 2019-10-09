@@ -21,9 +21,17 @@ public class PersonController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public List<Person> getPerson(){
-
-        List<Person> personList = personRepository.findAll();
+        List<Person> personList = personRepository.selectPersons();
         return  personList;
+    }
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            path = "/person/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public Object getPersonById(@PathVariable("id") Integer id){
+        return personRepository.findById(id);
     }
 
     @RequestMapping(
@@ -67,12 +75,13 @@ public class PersonController {
         return personRepository.saveAndFlush(updatePerson);
     }
 
+    @Transactional
     @RequestMapping(
             method = RequestMethod.DELETE,
             path = "/person/{id}",
             consumes =  MediaType.APPLICATION_JSON_VALUE
     )
     public void deletePerson(@PathVariable("id") Integer id){
-        personRepository.deleteById(id);
+        personRepository.deletePerson(id);
     }
 }
