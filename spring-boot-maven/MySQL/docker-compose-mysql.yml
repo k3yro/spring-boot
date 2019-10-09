@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  spring_boot_mysql_database:
+    image: mysql
+    container_name: spring_boot_mysql_database
+    environment: 
+      MYSQL_ROOT_PASSWORD: geheim
+      MYSQL_DATABASE: spring_boot_mysql_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: geheim
+    ports:
+      - 3306:3306
+    volumes:
+      - spring_boot_mysql_database_data:/var/lib/mysql
+
+volumes: 
+  spring_boot_mysql_database_data:
