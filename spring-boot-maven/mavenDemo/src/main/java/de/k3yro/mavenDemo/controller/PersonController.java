@@ -3,6 +3,7 @@ package de.k3yro.mavenDemo.controller;
 import de.k3yro.mavenDemo.entity.Person;
 import de.k3yro.mavenDemo.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class PersonController {
             path = "/person",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @Cacheable("person")
     public List<Person> getPerson(){
         List<Person> personList = personRepository.selectPersons();
         return  personList;

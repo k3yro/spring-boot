@@ -8,7 +8,8 @@ public class MavenDemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(MavenDemoApplication.class);
-		app.setAdditionalProfiles("prod");
+		app.setAdditionalProfiles("dev");
+		//app.setAdditionalProfiles("prod");
 		app.run(args);
 	}
 }
