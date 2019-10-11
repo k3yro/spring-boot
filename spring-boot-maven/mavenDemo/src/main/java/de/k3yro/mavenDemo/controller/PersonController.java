@@ -1,9 +1,11 @@
 package de.k3yro.mavenDemo.controller;
 
 import de.k3yro.mavenDemo.entity.Person;
+import de.k3yro.mavenDemo.repository.PersonPagingRepository;
 import de.k3yro.mavenDemo.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,20 @@ public class PersonController {
 
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    PersonPagingRepository personPagingRepository;
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            path = "/personPaging/{page}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public List<Person> getPagingPerson(@PathVariable("page") Integer page){
+        return personPagingRepository.findAll(
+                PageRequest.of(page, 2)
+        ).getContent();
+    }
 
     @RequestMapping(
             method = RequestMethod.GET,
