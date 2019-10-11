@@ -5,6 +5,7 @@
 ## Abhängigkeiten
 - [maven jdbc mysql](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.6)
 - [maven spring boot jpa](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa/2.1.3.RELEASE)
+- [maven spring boot security](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security/)
 
 ## Install
 - [IntelliJ](https://java.com/de/download/)
